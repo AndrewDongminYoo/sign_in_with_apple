@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: sign_in_with_apple_platform_interface,sign_in_with_apple_web
+dependency_overrides:
+  sign_in_with_apple_platform_interface:
+    path: ../sign_in_with_apple_platform_interface
+  sign_in_with_apple_web:
+    path: ../sign_in_with_apple_web

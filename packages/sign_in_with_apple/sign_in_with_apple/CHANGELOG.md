@@ -1,3 +1,5 @@
+# CHANGELOG
+
 ## 6.1.4
 
 - Bump `sign_in_with_apple_web` dependency to _actually_ include fix from [#432](https://github.com/aboutyou/dart_packages/pull/432)
@@ -8,7 +10,7 @@
 
 ## 6.1.2
 
-- Switch to modern Gradle setup (https://docs.flutter.dev/release/breaking-changes/flutter-gradle-plugin-apply) for the example app
+- Switch to modern Gradle [setup](https://docs.flutter.dev/release/breaking-changes/flutter-gradle-plugin-apply) for the example app
 - Fix JS types for scenarios omitting `email` scope or `state` parameter [#432](https://github.com/aboutyou/dart_packages/pull/432)
 
 ## 6.1.1
@@ -44,7 +46,7 @@
 
 ## 4.1.0
 
-- Add support for `transferred` credential state (Xcode 13.3.1 support) 
+- Add support for `transferred` credential state (Xcode 13.3.1 support)
 
 ## 4.0.0
 
@@ -95,7 +97,7 @@
 ## 2.3.0
 
 - Fix the Android implementation closing the Chrome Custom Tab to not execute `runApp` in the Flutter again, but rather bring the existing Flutter activity to the front
-  - https://github.com/aboutyou/dart_packages/issues/81 / https://github.com/aboutyou/dart_packages/pull/82
+  - [#81](https://github.com/aboutyou/dart_packages/issues/81) / [#82](https://github.com/aboutyou/dart_packages/pull/82)
   - Thanks to [@eduribas](https://github.com/eduribas) for contributing this fix
 
 ## 2.2.0
@@ -108,7 +110,7 @@
 
 ## 2.1.0
 
-- Expose `identityToken` to enable Firebase integration (https://github.com/aboutyou/dart_packages/issues/62)
+- Expose `identityToken` to enable [Firebase integration](https://github.com/aboutyou/dart_packages/issues/62)
 - Add support for passing a `nonce` to the authentication request
 
 ## 2.0.0+5

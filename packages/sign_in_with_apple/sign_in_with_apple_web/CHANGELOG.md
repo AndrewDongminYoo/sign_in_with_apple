@@ -1,3 +1,5 @@
+# CHANGELOG
+
 ## 2.1.0
 
 - Set min Flutter SDK to 3.19.0

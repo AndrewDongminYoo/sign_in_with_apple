@@ -18,9 +18,9 @@ flutter run -d macOS
 
 ### Simulate a callback from the SiwA process
 
-This mimicks the `intent://` link the success redirect would use
+This mimics the `intent://` link the success redirect would use
 
-```
+```shell
 adb shell am start -a android.intent.action.VIEW \
     -c android.intent.category.BROWSABLE \
     -d "signinwithapple://callback?code=abc123" com.aboutyou.dart_packages.sign_in_with_apple.example
@@ -28,7 +28,7 @@ adb shell am start -a android.intent.action.VIEW \
 
 ### Simulate a deep link into the app
 
-```
+```shell
 adb shell am start -a android.intent.action.VIEW \
     -c android.intent.category.BROWSABLE \
     -d "siwa-example://siwa.example.com/foo" com.aboutyou.dart_packages.sign_in_with_apple.example

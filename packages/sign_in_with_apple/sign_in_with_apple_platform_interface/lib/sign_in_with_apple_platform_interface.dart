@@ -18,7 +18,6 @@ export 'package:sign_in_with_apple_platform_interface/exceptions.dart';
 export 'package:sign_in_with_apple_platform_interface/nonce.dart';
 export 'package:sign_in_with_apple_platform_interface/web_authentication_options.dart';
 
-
 /// The interface that implementations of `sign_in_with_apple` must implement.
 ///
 /// Platform implementations should extend this class rather than implement it as `sign_in_with_apple`

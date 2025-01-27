@@ -31,7 +31,7 @@ class AuthorizationCredentialAppleID {
   /// An identifier associated with the authenticated user.
   ///
   /// This will always be provided on iOS and macOS systems. On Android, however, this will not be present.
-  /// This will stay the same between sign ins, until the user deauthorizes your App.
+  /// This will stay the same between sign ins, until the user de-authorizes your App.
   final String? userIdentifier;
 
   /// The users given name, in case it was requested.
@@ -146,7 +146,7 @@ AuthorizationCredentialAppleID parseAuthorizationCredentialAppleIDFromDeeplink(
   Uri deeplink,
 ) {
   if (deeplink.queryParameters.containsKey('error')) {
-    /// In case an error occured during the web flow, the URL will have an `error` parameter.
+    /// In case an error occurred during the web flow, the URL will have an `error` parameter.
     ///
     /// The only error code that might be returned is `user_cancelled_authorize`,
     /// which indicates that the user clicked the `Cancel` button during the web flow.

@@ -18,7 +18,7 @@ enum CredentialState {
   notFound,
 }
 
-/// Parses the string represenation of a [CredentialState] to its enum value.
+/// Parses the string representation of a [CredentialState] to its enum value.
 ///
 /// The values are aligned with the native implementations.
 ///

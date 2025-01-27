@@ -29,7 +29,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     /// Optional parameters for web-based authentication flows on non-Apple platforms
     ///
     /// This parameter is required on Android.
-    WebAuthenticationOptions? webAuthenticationOptions,
+    required WebAuthenticationOptions webAuthenticationOptions,
 
     /// Optional string which, if set, will be be embedded in the resulting `identityToken` field on the [AuthorizationCredentialAppleID].
     ///
@@ -44,12 +44,6 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     String? state,
   }) async {
     if (Platform.isAndroid) {
-      if (webAuthenticationOptions == null) {
-        throw Exception(
-          '`webAuthenticationOptions` argument must be provided on Android.',
-        );
-      }
-
       return _signInWithAppleAndroid(
         scopes: scopes,
         webAuthenticationOptions: webAuthenticationOptions,

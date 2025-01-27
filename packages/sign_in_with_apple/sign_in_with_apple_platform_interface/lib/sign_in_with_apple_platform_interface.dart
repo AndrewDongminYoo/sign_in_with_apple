@@ -51,7 +51,7 @@ abstract class SignInWithApplePlatform extends PlatformInterface {
 
   Future<AuthorizationCredentialAppleID> getAppleIDCredential({
     required List<AppleIDAuthorizationScopes> scopes,
-    WebAuthenticationOptions? webAuthenticationOptions,
+    required WebAuthenticationOptions webAuthenticationOptions,
     String? nonce,
     String? state,
   }) async {

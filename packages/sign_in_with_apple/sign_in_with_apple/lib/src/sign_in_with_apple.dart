@@ -61,7 +61,7 @@ class SignInWithApple {
     /// Optional parameters for web-based authentication flows on non-Apple platforms
     ///
     /// This parameter is required on Android and on the Web.
-    WebAuthenticationOptions? webAuthenticationOptions,
+    required WebAuthenticationOptions webAuthenticationOptions,
 
     /// Optional string which, if set, will be be embedded in the resulting `identityToken` field on the [AuthorizationCredentialAppleID].
     ///

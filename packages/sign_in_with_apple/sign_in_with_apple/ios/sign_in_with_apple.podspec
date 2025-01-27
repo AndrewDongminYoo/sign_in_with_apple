@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 Flutter bridge to initiate Sign in with Apple (currently iOS only). Includes support for keychain entries as well as sign in with an Apple ID.
                        DESC
-  s.homepage         = 'https://github.com/aboutyou/dart_packages/tree/master/packages/sign_in_with_apple'
+  s.homepage         = 'https://github.com/AndrewDongminYoo/sign_in_with_apple/tree/master/packages/sign_in_with_apple'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Timm Preetz' => 'timm.preetz@aboutyou.com' }
   s.source           = { :path => '.' }

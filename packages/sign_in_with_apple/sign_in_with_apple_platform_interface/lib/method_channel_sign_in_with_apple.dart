@@ -44,7 +44,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     String? state,
   }) async {
     if (Platform.isAndroid) {
-      return _signInWithAppleAndroid(
+      return signInWithAppleAndroid(
         scopes: scopes,
         webAuthenticationOptions: webAuthenticationOptions,
         nonce: nonce,
@@ -136,7 +136,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     }
   }
 
-  Future<AuthorizationCredentialAppleID> _signInWithAppleAndroid({
+  Future<AuthorizationCredentialAppleID> signInWithAppleAndroid({
     required List<AppleIDAuthorizationScopes> scopes,
     required WebAuthenticationOptions webAuthenticationOptions,
     required String? nonce,

@@ -8,7 +8,7 @@ public class SwiftSignInWithApplePlugin: NSObject, FlutterPlugin {
             name: methodChannelName,
             binaryMessenger: registrar.messenger()
         )
-        
+
         if #available(iOS 13.0, *) {
             let instance = SignInWithAppleAvailablePlugin()
             registrar.addMethodCallDelegate(instance, channel: channel)

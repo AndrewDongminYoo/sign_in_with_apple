@@ -1,9 +1,9 @@
 import AuthenticationServices
 
 #if os(OSX)
-import FlutterMacOS
+    import FlutterMacOS
 #elseif os(iOS)
-import Flutter
+    import Flutter
 #endif
 
 public class SignInWithAppleUnavailablePlugin: NSObject, FlutterPlugin {
@@ -14,17 +14,16 @@ public class SignInWithAppleUnavailablePlugin: NSObject, FlutterPlugin {
     //
     // Each target platform will still need a specific Plugin implementation
     // which will need to decide whether or not Sign in with Apple is available
-    public static func register(with registrar: FlutterPluginRegistrar) {
+    public static func register(with _: FlutterPluginRegistrar) {
         print("SignInWithAppleUnavailablePlugin tried to register which is not allowed")
     }
-    
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         if call.method == "isAvailable" {
             result(false)
             return
         }
-        
+
         result(
             SignInWithAppleGenericError.notSupported.toFlutterError()
         )

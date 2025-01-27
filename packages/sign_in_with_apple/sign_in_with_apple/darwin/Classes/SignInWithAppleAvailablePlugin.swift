@@ -1,9 +1,9 @@
 import AuthenticationServices
 
 #if os(OSX)
-import FlutterMacOS
+    import FlutterMacOS
 #elseif os(iOS)
-import Flutter
+    import Flutter
 #endif
 
 let methodChannelName = "com.aboutyou.dart_packages.sign_in_with_apple"
@@ -19,7 +19,7 @@ public class SignInWithAppleAvailablePlugin: NSObject, FlutterPlugin {
     //
     // Each target platform will still need a specific Plugin implementation
     // which will need to decide whether or not Sign in with Apple is available
-    public static func register(with registrar: FlutterPluginRegistrar) {
+    public static func register(with _: FlutterPluginRegistrar) {
         print("SignInWithAppleAvailablePlugin tried to register which is not allowed")
     }
 
@@ -27,7 +27,7 @@ public class SignInWithAppleAvailablePlugin: NSObject, FlutterPlugin {
         switch call.method {
         case "isAvailable":
             result(true)
-            
+
         case "performAuthorizationRequest":
             // Makes sure arguments exists and is a List
             guard let args = call.arguments as? [Any] else {
@@ -36,7 +36,7 @@ public class SignInWithAppleAvailablePlugin: NSObject, FlutterPlugin {
                 )
                 return
             }
-                
+
             let signInController = SignInWithAppleAuthorizationController(result)
 
             // store to keep alive
@@ -68,7 +68,7 @@ public class SignInWithAppleAvailablePlugin: NSObject, FlutterPlugin {
             }
 
             let appleIDProvider = ASAuthorizationAppleIDProvider()
-                
+
             appleIDProvider.getCredentialState(forUserID: userIdentifier) {
                 credentialState, error in
                 if let error = error {
@@ -87,7 +87,6 @@ public class SignInWithAppleAvailablePlugin: NSObject, FlutterPlugin {
                     result("revoked")
                 case .notFound:
                     result("notFound")
-
                 default:
                     result(
                         SignInWithAppleError
@@ -106,44 +105,44 @@ public class SignInWithAppleAvailablePlugin: NSObject, FlutterPlugin {
 @available(iOS 13.0, macOS 10.15, *)
 class SignInWithAppleAuthorizationController: NSObject, ASAuthorizationControllerDelegate {
     var callback: FlutterResult
-    
+
     init(_ callback: @escaping FlutterResult) {
         self.callback = callback
     }
-    
+
     // Parses a list of json requests into the proper [ASAuthorizationRequest] type.
     //
     // The parsing itself tries to be as lenient as possible to recover gracefully from parsing errors.
     public static func parseRequests(rawRequests: [Any]) -> [ASAuthorizationRequest] {
         var requests: [ASAuthorizationRequest] = []
-        
+
         for request in rawRequests {
             guard let requestMap = request as? [String: Any] else {
-                print("[SignInWithApplePlugin]: Request is not an object");
+                print("[SignInWithApplePlugin]: Request is not an object")
                 continue
             }
-            
+
             guard let type = requestMap["type"] as? String else {
-                print("[SignInWithApplePlugin]: Request type is not an string");
+                print("[SignInWithApplePlugin]: Request type is not an string")
                 continue
             }
-            
-            switch (type) {
+
+            switch type {
             case "appleid":
                 let appleIDProvider = ASAuthorizationAppleIDProvider()
                 let appleIDRequest = appleIDProvider.createRequest()
-                
+
                 if let nonce = requestMap["nonce"] as? String {
-                    appleIDRequest.nonce = nonce;
+                    appleIDRequest.nonce = nonce
                 }
 
                 if let state = requestMap["state"] as? String {
-                    appleIDRequest.state = state;
+                    appleIDRequest.state = state
                 }
-                
+
                 if let scopes = requestMap["scopes"] as? [String] {
                     appleIDRequest.requestedScopes = []
-                    
+
                     for scope in scopes {
                         switch scope {
                         case "email":
@@ -151,25 +150,24 @@ class SignInWithAppleAuthorizationController: NSObject, ASAuthorizationControlle
                         case "fullName":
                             appleIDRequest.requestedScopes?.append(.fullName)
                         default:
-                            print("[SignInWithApplePlugin]: Unknown scope for the Apple ID request: \(scope)");
-                            continue;
+                            print("[SignInWithApplePlugin]: Unknown scope for the Apple ID request: \(scope)")
+                            continue
                         }
                     }
                 }
-                
+
                 requests.append(appleIDRequest)
             case "password":
                 let passwordProvider = ASAuthorizationPasswordProvider()
                 let passwordRequest = passwordProvider.createRequest()
-                
+
                 requests.append(passwordRequest)
             default:
-                print("[SignInWithApplePlugin]: Unknown request type: \(type)");
-                continue;
+                print("[SignInWithApplePlugin]: Unknown request type: \(type)")
+                continue
             }
-            
         }
-        
+
         return requests
     }
 
@@ -181,12 +179,12 @@ class SignInWithAppleAuthorizationController: NSObject, ASAuthorizationControlle
         authorizationController.delegate = self
         authorizationController.performRequests()
     }
-    
+
     private func parseData(data: Data?) -> String? {
         if let data = data {
             return String(decoding: data, as: UTF8.self)
         }
-        
+
         return nil
     }
 
@@ -239,7 +237,7 @@ class SignInWithAppleAuthorizationController: NSObject, ASAuthorizationControlle
             )
         } else {
             print("[SignInWithApplePlugin]: Unknown authorization error \(error)")
-            
+
             callback(
                 SignInWithAppleError.authorizationError(
                     ASAuthorizationError.Code.unknown,

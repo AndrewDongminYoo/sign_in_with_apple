@@ -1,4 +1,7 @@
+// 🐦 Flutter imports:
 import 'package:flutter/services.dart';
+
+// 📦 Package imports:
 import 'package:meta/meta.dart';
 
 /// A more specific [PlatformException] which describes any potential native errors that occur within the Sign in with Apple plugin.

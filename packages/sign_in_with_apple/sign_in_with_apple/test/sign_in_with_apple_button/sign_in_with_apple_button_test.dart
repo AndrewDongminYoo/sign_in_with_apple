@@ -1,11 +1,17 @@
 // ignore_for_file: deprecated_member_use
 
+// 🎯 Dart imports:
 import 'dart:io';
 
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide IconAlignment;
 import 'package:flutter/services.dart';
+
+// 📦 Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// 🌎 Project imports:
 import 'package:sign_in_with_apple/src/widgets/sign_in_with_apple_button.dart';
 
 // The tests are only run on macOS system, on other systems they will be skipped

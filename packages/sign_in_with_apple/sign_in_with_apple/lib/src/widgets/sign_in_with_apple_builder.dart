@@ -1,5 +1,7 @@
+// 🐦 Flutter imports:
 import 'package:flutter/widgets.dart';
 
+// 🌎 Project imports:
 import '../../sign_in_with_apple.dart';
 
 Widget _fallbackBuilder(BuildContext context) => const SizedBox.shrink();

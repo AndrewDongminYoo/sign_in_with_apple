@@ -1,6 +1,10 @@
-import 'package:meta/meta.dart';
+// 🐦 Flutter imports:
 import 'package:flutter/services.dart';
 
+// 📦 Package imports:
+import 'package:meta/meta.dart';
+
+// 🌎 Project imports:
 import './authorization_credential.dart';
 
 /// A base class which describes an authorization request that we will make on the native side.

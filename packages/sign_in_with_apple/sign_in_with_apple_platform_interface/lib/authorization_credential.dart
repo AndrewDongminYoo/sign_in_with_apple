@@ -1,7 +1,10 @@
+// 🎯 Dart imports:
 import 'dart:convert';
 
+// 📦 Package imports:
 import 'package:meta/meta.dart';
 
+// 🌎 Project imports:
 import './authorization_request.dart';
 import './exceptions.dart';
 

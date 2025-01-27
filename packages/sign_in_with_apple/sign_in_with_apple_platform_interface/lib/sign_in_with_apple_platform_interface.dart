@@ -1,10 +1,15 @@
+// 🎯 Dart imports:
 import 'dart:async';
 
+// 📦 Package imports:
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
+// 🌎 Project imports:
 import 'package:sign_in_with_apple_platform_interface/authorization_credential.dart';
 import 'package:sign_in_with_apple_platform_interface/authorization_request.dart';
 import 'package:sign_in_with_apple_platform_interface/credential_state.dart';
 import 'package:sign_in_with_apple_platform_interface/web_authentication_options.dart';
+import 'method_channel_sign_in_with_apple.dart';
 
 export 'package:sign_in_with_apple_platform_interface/authorization_credential.dart';
 export 'package:sign_in_with_apple_platform_interface/authorization_request.dart';
@@ -13,7 +18,6 @@ export 'package:sign_in_with_apple_platform_interface/exceptions.dart';
 export 'package:sign_in_with_apple_platform_interface/nonce.dart';
 export 'package:sign_in_with_apple_platform_interface/web_authentication_options.dart';
 
-import 'method_channel_sign_in_with_apple.dart';
 
 /// The interface that implementations of `sign_in_with_apple` must implement.
 ///

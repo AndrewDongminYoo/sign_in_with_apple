@@ -1,8 +1,13 @@
 // ignore_for_file: deprecated_member_use
 
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+// 📦 Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// 🌎 Project imports:
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 void main() {

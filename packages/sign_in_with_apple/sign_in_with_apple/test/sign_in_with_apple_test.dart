@@ -1,6 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
+// 📦 Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// 🌎 Project imports:
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 void main() {

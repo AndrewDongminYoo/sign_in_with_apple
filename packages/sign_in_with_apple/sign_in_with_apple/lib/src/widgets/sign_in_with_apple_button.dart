@@ -1,5 +1,8 @@
+// 🐦 Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// 🌎 Project imports:
 import 'package:sign_in_with_apple/src/widgets/apple_logo_painter.dart';
 
 /// The scale based on the height of the button

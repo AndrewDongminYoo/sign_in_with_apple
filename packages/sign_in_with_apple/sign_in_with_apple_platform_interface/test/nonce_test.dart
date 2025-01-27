@@ -1,4 +1,7 @@
+// 📦 Package imports:
 import 'package:flutter_test/flutter_test.dart';
+
+// 🌎 Project imports:
 import 'package:sign_in_with_apple_platform_interface/sign_in_with_apple_platform_interface.dart';
 
 void main() {

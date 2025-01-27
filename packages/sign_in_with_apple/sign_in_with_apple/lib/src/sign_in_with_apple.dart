@@ -1,7 +1,11 @@
+// 🎯 Dart imports:
 import 'dart:async';
 
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// 📦 Package imports:
 import 'package:sign_in_with_apple_platform_interface/method_channel_sign_in_with_apple.dart';
 import 'package:sign_in_with_apple_platform_interface/sign_in_with_apple_platform_interface.dart';
 

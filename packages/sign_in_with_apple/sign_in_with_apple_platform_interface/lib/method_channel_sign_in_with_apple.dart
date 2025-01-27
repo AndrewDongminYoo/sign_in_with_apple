@@ -1,9 +1,12 @@
+// 🎯 Dart imports:
 import 'dart:async';
 import 'dart:io';
 
+// 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// 🌎 Project imports:
 import 'sign_in_with_apple_platform_interface.dart';
 
 const MethodChannel _channel =

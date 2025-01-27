@@ -38,7 +38,7 @@ class AuthorizationCredentialAppleID {
   final String? userIdentifier;
 
   /// The users given name, in case it was requested.
-  /// You will need to provide the [AppleIDAuthorizationScopes.fullName] scope to the [AppleIDAuthorizationRequest] for requesting this information.
+  /// You will need to provide the [AppleIDAuthorizationScopes.name] scope to the [AppleIDAuthorizationRequest] for requesting this information.
   ///
   /// This information will only be provided on the first authorizations.
   /// Upon further authorizations, you will only get the [userIdentifier],
@@ -47,7 +47,7 @@ class AuthorizationCredentialAppleID {
   final String? givenName;
 
   /// The users family name, in case it was requested.
-  /// You will need to provide the [AppleIDAuthorizationScopes.fullName] scope to the [AppleIDAuthorizationRequest] for requesting this information.
+  /// You will need to provide the [AppleIDAuthorizationScopes.name] scope to the [AppleIDAuthorizationRequest] for requesting this information.
   ///
   /// This information will only be provided on the first authorizations.
   /// Upon further authorizations, you will only get the [userIdentifier],

@@ -162,7 +162,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
           switch (scope) {
             case AppleIDAuthorizationScopes.email:
               return 'email';
-            case AppleIDAuthorizationScopes.fullName:
+            case AppleIDAuthorizationScopes.name:
               return 'name';
           }
         }).join(' '),

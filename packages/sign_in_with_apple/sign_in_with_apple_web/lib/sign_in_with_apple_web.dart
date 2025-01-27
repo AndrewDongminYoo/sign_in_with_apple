@@ -36,7 +36,7 @@ class SignInWithApplePlugin extends SignInWithApplePlatform {
           for (final scope in scopes)
             if (scope == AppleIDAuthorizationScopes.email)
               'email'
-            else if (scope == AppleIDAuthorizationScopes.fullName)
+            else if (scope == AppleIDAuthorizationScopes.name)
               'name',
         ].join(' '),
         state: state,

@@ -34,7 +34,7 @@ void main() {
       await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
+          AppleIDAuthorizationScopes.name,
         ],
         webAuthenticationOptions: WebAuthenticationOptions(
           clientId: 'com.example',

@@ -21,7 +21,7 @@ SignInWithAppleButton(
     final credential = await SignInWithApple.getAppleIDCredential(
       scopes: [
         AppleIDAuthorizationScopes.email,
-        AppleIDAuthorizationScopes.fullName,
+        AppleIDAuthorizationScopes.name,
       ],
     );
 
@@ -132,7 +132,7 @@ After this is done, you can now proceed to integrate Sign in with Apple into the
 
 Adding Sign in with Apple to a Flutter app is shown from 2 sides here. First we look into making the example app work with our server-side setup, and then we go over the additional steps required to set up your app from scratch.
 
-To use this plugin on Android, you will need to use the [Android V2 Embedding](https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects).  
+To use this plugin on Android, you will need to use the [Android V2 Embedding](https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects).
 You can find out if you are already using the new embedding by looking into your `AndroidManifest.xml` and look for the following element:
 
 ```xml
@@ -165,7 +165,7 @@ For web support you need to add the follow script import to your `index.html`'s 
 
 (We haven't found a way to only load this on demand, as the script seemingly inits itself on page load.)
 
-Then in the service's configuration in Apple's developer portal add the domains that host your page both in `Domains and Subdomains` as well as `Returns URLs`.  
+Then in the service's configuration in Apple's developer portal add the domains that host your page both in `Domains and Subdomains` as well as `Returns URLs`.
 The former is needed so you can open the flow from the web page, while the latter is used to post the final credentials back from the pop-up to the opening page. (If you omit this, the flow will just silently be stuck in the last step.)
 
 #### Example App

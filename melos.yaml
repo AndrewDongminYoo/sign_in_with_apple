@@ -17,9 +17,9 @@ scripts:
     description: Run Flutter tests for a specific package in this project and generate a coverage report.
 
   format:
-    run: melos exec -- "dart fix --apply ; dart format ."
+    run: melos exec -- "dart fix --apply ; dart format . --line-length=120"
     description: Format all Dart files in this project.
 
   format:ci:
-    run: melos exec -- "dart format . --set-exit-if-changed"
+    run: melos exec -- "dart format . --set-exit-if-changed --line-length=120"
     description: Check Dart file formatting for all packages in this project.

@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:meta/meta.dart';
 
 // 🌎 Project imports:
-import './authorization_request.dart';
-import './exceptions.dart';
+import 'package:sign_in_with_apple_platform_interface/authorization_request.dart';
+import 'package:sign_in_with_apple_platform_interface/exceptions.dart';
 
 /// Authorization details from a successful Sign in with Apple flow.
 ///
@@ -113,8 +113,7 @@ AuthorizationCredentialAppleID parseAuthorizationCredentialAppleID(
     if (authorizationCode == null) {
       throw const SignInWithAppleAuthorizationException(
         code: AuthorizationErrorCode.invalidResponse,
-        message:
-            'parseAuthorizationCredentialAppleID: `authorizationCode` field was `null`',
+        message: 'parseAuthorizationCredentialAppleID: `authorizationCode` field was `null`',
       );
     }
 
@@ -164,8 +163,7 @@ AuthorizationCredentialAppleID parseAuthorizationCredentialAppleIDFromDeeplink(
   }
 
   final user = deeplink.queryParameters.containsKey('user')
-      ? json.decode(deeplink.queryParameters['user'] as String)
-          as Map<String, dynamic>
+      ? json.decode(deeplink.queryParameters['user'] as String) as Map<String, dynamic>
       : null;
   final name = user != null ? user['name'] as Map<String, dynamic>? : null;
 
@@ -173,8 +171,7 @@ AuthorizationCredentialAppleID parseAuthorizationCredentialAppleIDFromDeeplink(
   if (authorizationCode == null) {
     throw const SignInWithAppleAuthorizationException(
       code: AuthorizationErrorCode.invalidResponse,
-      message:
-          'parseAuthorizationCredentialAppleIDFromDeeplink: No `code` query parameter set)',
+      message: 'parseAuthorizationCredentialAppleIDFromDeeplink: No `code` query parameter set)',
     );
   }
 

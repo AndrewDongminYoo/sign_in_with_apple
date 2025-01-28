@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
 
 // 🌎 Project imports:
-import './authorization_credential.dart';
+import 'package:sign_in_with_apple_platform_interface/authorization_credential.dart';
 
 /// A base class which describes an authorization request that we will make on the native side.
 ///

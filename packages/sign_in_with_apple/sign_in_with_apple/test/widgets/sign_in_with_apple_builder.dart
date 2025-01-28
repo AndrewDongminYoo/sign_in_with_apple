@@ -15,80 +15,60 @@ void main() {
     SignInWithApple.channel.setMockMethodCallHandler(null);
   });
 
-  testWidgets(
-    'Should render widget if Sign in with Apple is enabled',
-    (tester) async {
-      var calls = 0;
+  testWidgets('Should render widget if Sign in with Apple is enabled', (tester) async {
+    var calls = 0;
 
-      SignInWithApple.channel.setMockMethodCallHandler((call) async {
-        calls++;
+    SignInWithApple.channel.setMockMethodCallHandler((call) async {
+      calls++;
 
-        if (call.method == 'isAvailable') {
-          return true;
-        }
+      if (call.method == 'isAvailable') {
+        return true;
+      }
 
-        throw UnimplementedError();
-      });
+      throw UnimplementedError();
+    });
 
-      await tester.runAsync(() async {
-        await tester.pumpWidget(
-          SignInWithAppleBuilder(
-            builder: (context) => const SizedBox(
-              height: 20,
-              width: 20,
-            ),
-          ),
-        );
-
-        await tester.pump();
-      });
-
-      expect(
-        find.byType(Container),
-        findsOneWidget,
+    await tester.runAsync(() async {
+      await tester.pumpWidget(
+        SignInWithAppleBuilder(
+          builder: (context) => const SizedBox(height: 20, width: 20),
+        ),
       );
 
-      expect(calls, 1);
-    },
-  );
+      await tester.pump();
+    });
 
-  testWidgets(
-    'Should render the fallback if Sign in with Apple is not available',
-    (tester) async {
-      var calls = 0;
+    expect(find.byType(Container), findsOneWidget);
 
-      SignInWithApple.channel.setMockMethodCallHandler((call) async {
-        calls++;
+    expect(calls, 1);
+  });
 
-        if (call.method == 'isAvailable') {
-          return false;
-        }
+  testWidgets('Should render the fallback if Sign in with Apple is not available', (tester) async {
+    var calls = 0;
 
-        throw UnimplementedError();
-      });
+    SignInWithApple.channel.setMockMethodCallHandler((call) async {
+      calls++;
 
-      await tester.runAsync(() async {
-        await tester.pumpWidget(
-          SignInWithAppleBuilder(
-            builder: (context) => Builder(
-              builder: (context) => const SizedBox.shrink(),
-            ),
-            fallbackBuilder: (context) => const SizedBox(
-              height: 20,
-              width: 20,
-            ),
-          ),
-        );
+      if (call.method == 'isAvailable') {
+        return false;
+      }
 
-        await tester.pump();
-      });
+      throw UnimplementedError();
+    });
 
-      expect(
-        find.byType(Container),
-        findsOneWidget,
+    await tester.runAsync(() async {
+      await tester.pumpWidget(
+        SignInWithAppleBuilder(
+          builder: (context) => Builder(builder: (context) => const SizedBox.shrink()),
+          fallbackBuilder: (context) => const SizedBox(height: 20, width: 20),
+        ),
       );
 
-      expect(calls, 1);
-    },
-  );
+      await tester.pump();
+    });
+
+    expect(find.byType(Container), findsOneWidget);
+
+    expect(calls, 1);
+  });
 }

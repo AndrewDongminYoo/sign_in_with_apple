@@ -13,10 +13,9 @@ import 'package:sign_in_with_apple_platform_interface/sign_in_with_apple_platfor
 // ignore: avoid_classes_with_only_static_members
 class SignInWithApple {
   @visibleForTesting
-  static MethodChannel get channel =>
-      (SignInWithApplePlatform.instance as MethodChannelSignInWithApple)
-          // ignore: invalid_use_of_visible_for_testing_member
-          .channel;
+  static MethodChannel get channel => (SignInWithApplePlatform.instance as MethodChannelSignInWithApple)
+      // ignore: invalid_use_of_visible_for_testing_member
+      .channel;
 
   /// Returns whether Sign in with Apple is available on the current platform.
   ///

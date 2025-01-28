@@ -8,8 +8,8 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:sign_in_with_apple_platform_interface/authorization_credential.dart';
 import 'package:sign_in_with_apple_platform_interface/authorization_request.dart';
 import 'package:sign_in_with_apple_platform_interface/credential_state.dart';
+import 'package:sign_in_with_apple_platform_interface/method_channel_sign_in_with_apple.dart';
 import 'package:sign_in_with_apple_platform_interface/web_authentication_options.dart';
-import 'method_channel_sign_in_with_apple.dart';
 
 export 'package:sign_in_with_apple_platform_interface/authorization_credential.dart';
 export 'package:sign_in_with_apple_platform_interface/authorization_request.dart';
@@ -60,9 +60,7 @@ abstract class SignInWithApplePlatform extends PlatformInterface {
     );
   }
 
-  Future<CredentialState> getCredentialState(
-    String userIdentifier,
-  ) async {
+  Future<CredentialState> getCredentialState(String userIdentifier) async {
     throw UnimplementedError('getCredentialState() has not been implemented.');
   }
 

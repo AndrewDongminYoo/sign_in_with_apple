@@ -21,10 +21,9 @@ Future<void> main() async {
   //
   // Roboto is then remapped to the San Francisco's font name, so it gets picked up while running the tests
   // (`fontFamilyFallback` didn't work in tests and `Ahem` (block) font would be used instead)
-  final fontData =
-      File.fromUri(_resolvePathInTestDirectory('../assets/fonts/Roboto.ttf'))
-          .readAsBytes()
-          .then((bytes) => ByteData.view(Uint8List.fromList(bytes).buffer));
+  final fontData = File.fromUri(_resolvePathInTestDirectory('../assets/fonts/Roboto.ttf'))
+      .readAsBytes()
+      .then((bytes) => ByteData.view(Uint8List.fromList(bytes).buffer));
   final fontLoader = FontLoader('.SF Pro Text')..addFont(fontData);
   await fontLoader.load();
 
@@ -147,9 +146,7 @@ Future<void> main() async {
         TestSetup(
           child: SignInWithAppleButton(
             onPressed: () {},
-            borderRadius: const BorderRadius.all(
-              Radius.circular(22.0),
-            ),
+            borderRadius: const BorderRadius.all(Radius.circular(22.0)),
           ),
         ),
       );
@@ -166,12 +163,7 @@ Future<void> main() async {
     'Allows to customize the height of the button',
     (tester) async {
       await tester.pumpWidget(
-        TestSetup(
-          child: SignInWithAppleButton(
-            onPressed: () {},
-            height: 60,
-          ),
-        ),
+        TestSetup(child: SignInWithAppleButton(onPressed: () {}, height: 60)),
       );
 
       await expectLater(
@@ -179,14 +171,7 @@ Future<void> main() async {
         matchesGoldenFile('goldens/custom_height.png'),
       );
 
-      expect(
-        tester
-            .getSize(
-              find.byType(SignInWithAppleButton),
-            )
-            .height,
-        60,
-      );
+      expect(tester.getSize(find.byType(SignInWithAppleButton)).height, 60);
     },
     skip: !Platform.isMacOS,
   );
@@ -196,10 +181,7 @@ Future<void> main() async {
     (tester) async {
       await tester.pumpWidget(
         TestSetup(
-          child: SignInWithAppleButton(
-            onPressed: () {},
-            text: 'Login with Apple',
-          ),
+          child: SignInWithAppleButton(onPressed: () {}, text: 'Login with Apple'),
         ),
       );
 
@@ -208,10 +190,7 @@ Future<void> main() async {
         matchesGoldenFile('goldens/custom_text.png'),
       );
 
-      expect(
-        find.text('Login with Apple'),
-        findsOneWidget,
-      );
+      expect(find.text('Login with Apple'), findsOneWidget);
     },
     skip: !Platform.isMacOS,
   );
@@ -231,9 +210,7 @@ Future<void> main() async {
         ),
       );
 
-      await tester.tapAt(
-        tester.getCenter(find.byType(SignInWithAppleButton)),
-      );
+      await tester.tapAt(tester.getCenter(find.byType(SignInWithAppleButton)));
       await tester.pumpAndSettle();
 
       expect(callCount, 1);
@@ -261,15 +238,11 @@ class TestSetup extends StatelessWidget {
         color: backgroundColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            child,
-          ],
+          children: <Widget>[child],
         ),
       ),
       theme: const CupertinoThemeData().copyWith(
-        textTheme: const CupertinoTextThemeData().copyWith(
-          textStyle: const TextStyle(fontFamily: 'SF'),
-        ),
+        textTheme: const CupertinoTextThemeData().copyWith(textStyle: const TextStyle(fontFamily: 'SF')),
       ),
       debugShowCheckedModeBanner: false,
     );

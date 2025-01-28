@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // 🌎 Project imports:
-import 'sign_in_with_apple_platform_interface.dart';
+import 'package:sign_in_with_apple_platform_interface/sign_in_with_apple_platform_interface.dart';
 
 const MethodChannel _channel =
     MethodChannel('com.aboutyou.dart_packages.sign_in_with_apple');
@@ -61,33 +61,24 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
         );
       }
 
-      final response = await _channel.invokeMethod<Map<dynamic, dynamic>>(
-        'performAuthorizationRequest',
-        [
-          AppleIDAuthorizationRequest(
-            scopes: scopes,
-            nonce: nonce,
-            state: state,
-          ).toJson(),
-        ],
-      );
+      final response = await _channel
+          .invokeMethod<Map<dynamic, dynamic>>('performAuthorizationRequest', [
+        AppleIDAuthorizationRequest(scopes: scopes, nonce: nonce, state: state)
+            .toJson(),
+      ]);
 
       if (response == null) {
         throw Exception('getKeychainCredential: Received `null` response');
       }
 
-      return parseAuthorizationCredentialAppleID(
-        response,
-      );
+      return parseAuthorizationCredentialAppleID(response);
     } on PlatformException catch (exception) {
       throw SignInWithAppleException.fromPlatformException(exception);
     }
   }
 
   @override
-  Future<CredentialState> getCredentialState(
-    String userIdentifier,
-  ) async {
+  Future<CredentialState> getCredentialState(String userIdentifier) async {
     if (!Platform.isIOS &&
         !Platform.isMacOS &&
         Platform.environment['FLUTTER_TEST'] != 'true') {
@@ -121,9 +112,9 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
 
       final response = await _channel.invokeMethod<Map<dynamic, dynamic>>(
         'performAuthorizationRequest',
-        [
-          const PasswordAuthorizationRequest(),
-        ].map((request) => request.toJson()).toList(),
+        [const PasswordAuthorizationRequest()]
+            .map((request) => request.toJson())
+            .toList(),
       );
 
       if (response == null) {
@@ -142,7 +133,10 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     required String? nonce,
     required String? state,
   }) async {
-    assert(Platform.isAndroid);
+    assert(
+      Platform.isAndroid,
+      'signInWithAppleAndroid can only be called on Android.',
+    );
 
     // URL built according to https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js/incorporating_sign_in_with_apple_into_other_platforms#3332113
     final uri = Uri(
@@ -164,9 +158,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
         // So the same handling can be used for Apple and 3rd party platforms
         'response_type': 'code id_token',
         'response_mode': 'form_post',
-
         if (nonce != null) 'nonce': nonce,
-
         if (state != null) 'state': state,
       },
     ).toString();
@@ -174,9 +166,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     try {
       final result = await _channel.invokeMethod<String>(
         'performAuthorizationRequest',
-        <String, String>{
-          'url': uri,
-        },
+        <String, String>{'url': uri},
       );
 
       if (result == null) {

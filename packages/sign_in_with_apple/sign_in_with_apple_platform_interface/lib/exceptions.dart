@@ -59,17 +59,14 @@ abstract class SignInWithAppleException implements Exception {
         );
 
       default:
-        return UnknownSignInWithAppleException(
-          platformException: exception,
-        );
+        return UnknownSignInWithAppleException(platformException: exception);
     }
   }
 }
 
 /// An [SignInWithAppleException] which will be thrown if a [PlatformException]
 /// can't be mapped to a more specific [SignInWithAppleException].
-class UnknownSignInWithAppleException extends PlatformException
-    implements SignInWithAppleException {
+class UnknownSignInWithAppleException extends PlatformException implements SignInWithAppleException {
   UnknownSignInWithAppleException({
     required PlatformException platformException,
   }) : super(
@@ -79,8 +76,7 @@ class UnknownSignInWithAppleException extends PlatformException
         );
 
   @override
-  String toString() =>
-      'UnknownSignInWithAppleException($code, $message, $details)';
+  String toString() => 'UnknownSignInWithAppleException($code, $message, $details)';
 }
 
 /// An [SignInWithAppleException] which will be thrown in case Sign in with Apple is not supported.
@@ -122,8 +118,7 @@ enum AuthorizationErrorCode {
 /// A [SignInWithAppleException] indicating something went wrong while authenticating.
 ///
 /// Apple Docs: https://developer.apple.com/documentation/authenticationservices/asauthorizationerror
-class SignInWithAppleAuthorizationException
-    implements SignInWithAppleException {
+class SignInWithAppleAuthorizationException implements SignInWithAppleException {
   const SignInWithAppleAuthorizationException({
     required this.code,
     required this.message,

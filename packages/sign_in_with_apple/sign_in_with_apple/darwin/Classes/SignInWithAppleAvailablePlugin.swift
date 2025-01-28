@@ -148,7 +148,7 @@ class SignInWithAppleAuthorizationController: NSObject, ASAuthorizationControlle
                         case "email":
                             appleIDRequest.requestedScopes?.append(.email)
                         case "name":
-                            appleIDRequest.requestedScopes?.append(.name)
+                            appleIDRequest.requestedScopes?.append(.fullName)
                         default:
                             print("[SignInWithApplePlugin]: Unknown scope for the Apple ID request: \(scope)")
                             continue

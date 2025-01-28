@@ -16,7 +16,7 @@ void main() {
   test('performAuthorizationRequest -> Apple ID', () async {
     SignInWithApple.channel.setMockMethodCallHandler((methodCall) async {
       if (methodCall.method == 'performAuthorizationRequest') {
-        return <dynamic, dynamic>{
+        return {
           'type': 'appleid',
           'userIdentifier': 'some userIdentifier',
           'givenName': 'some givenName',
@@ -48,7 +48,7 @@ void main() {
   test('performAuthorizationRequest -> Username/Password', () async {
     SignInWithApple.channel.setMockMethodCallHandler((methodCall) async {
       if (methodCall.method == 'performAuthorizationRequest') {
-        return <dynamic, dynamic>{
+        return {
           'type': 'password',
           'username': 'user1',
           'password': 'admin',

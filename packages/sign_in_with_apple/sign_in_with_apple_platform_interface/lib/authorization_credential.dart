@@ -79,7 +79,7 @@ class AuthorizationCredentialAppleID {
 
   @override
   String toString() {
-    return 'AuthorizationCredentialAppleID($userIdentifier, $givenName, $familyName, $email, [identityToken set: ${identityToken != null}], $state)';
+    return 'AuthorizationCredentialAppleID(userIdentifier: $userIdentifier, givenName: $givenName, familyName: $familyName, email: $email, identityToken: $identityToken, state: $state)';
   }
 }
 
@@ -99,7 +99,7 @@ class AuthorizationCredentialPassword {
 
   @override
   String toString() {
-    return 'AuthorizationCredentialPassword($username, [REDACTED password])';
+    return 'AuthorizationCredentialPassword(username: $username, password: $password)';
   }
 }
 

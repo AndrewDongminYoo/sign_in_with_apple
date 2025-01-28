@@ -75,7 +75,7 @@ class AppleIDAuthorizationRequest implements AuthorizationRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{
+    return {
       'type': 'appleid',
       if (nonce != null) 'nonce': nonce,
       if (state != null) 'state': state,
@@ -103,8 +103,6 @@ class PasswordAuthorizationRequest implements AuthorizationRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'type': 'password',
-    };
+    return {'type': 'password'};
   }
 }

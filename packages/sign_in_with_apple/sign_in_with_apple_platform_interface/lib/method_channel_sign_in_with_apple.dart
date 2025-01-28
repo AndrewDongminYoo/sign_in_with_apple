@@ -9,8 +9,7 @@ import 'package:flutter/services.dart';
 // 🌎 Project imports:
 import 'package:sign_in_with_apple_platform_interface/sign_in_with_apple_platform_interface.dart';
 
-const MethodChannel _channel =
-    MethodChannel('com.aboutyou.dart_packages.sign_in_with_apple');
+const MethodChannel _channel = MethodChannel('com.aboutyou.dart_packages.sign_in_with_apple');
 
 /// An implementation of [SignInWithApplePlatform] that uses method channels.
 class MethodChannelSignInWithApple extends SignInWithApplePlatform {
@@ -53,18 +52,14 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     }
 
     try {
-      if (!Platform.isIOS &&
-          !Platform.isMacOS &&
-          Platform.environment['FLUTTER_TEST'] != 'true') {
+      if (!Platform.isIOS && !Platform.isMacOS && Platform.environment['FLUTTER_TEST'] != 'true') {
         throw const SignInWithAppleNotSupportedException(
           message: 'The current platform is not supported',
         );
       }
 
-      final response = await _channel
-          .invokeMethod<Map<dynamic, dynamic>>('performAuthorizationRequest', [
-        AppleIDAuthorizationRequest(scopes: scopes, nonce: nonce, state: state)
-            .toJson(),
+      final response = await _channel.invokeMethod<Map<dynamic, dynamic>>('performAuthorizationRequest', [
+        AppleIDAuthorizationRequest(scopes: scopes, nonce: nonce, state: state).toJson(),
       ]);
 
       if (response == null) {
@@ -79,9 +74,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
 
   @override
   Future<CredentialState> getCredentialState(String userIdentifier) async {
-    if (!Platform.isIOS &&
-        !Platform.isMacOS &&
-        Platform.environment['FLUTTER_TEST'] != 'true') {
+    if (!Platform.isIOS && !Platform.isMacOS && Platform.environment['FLUTTER_TEST'] != 'true') {
       throw const SignInWithAppleNotSupportedException(
         message: 'The current platform is not supported',
       );
@@ -91,7 +84,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
       return parseCredentialState(
         await _channel.invokeMethod<String>(
           'getCredentialState',
-          <String, String>{'userIdentifier': userIdentifier},
+          {'userIdentifier': userIdentifier},
         ),
       );
     } on PlatformException catch (exception) {
@@ -102,9 +95,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
   @override
   Future<AuthorizationCredentialPassword> getKeychainCredential() async {
     try {
-      if (!Platform.isIOS &&
-          !Platform.isMacOS &&
-          Platform.environment['FLUTTER_TEST'] != 'true') {
+      if (!Platform.isIOS && !Platform.isMacOS && Platform.environment['FLUTTER_TEST'] != 'true') {
         throw const SignInWithAppleNotSupportedException(
           message: 'The current platform is not supported',
         );
@@ -112,9 +103,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
 
       final response = await _channel.invokeMethod<Map<dynamic, dynamic>>(
         'performAuthorizationRequest',
-        [const PasswordAuthorizationRequest()]
-            .map((request) => request.toJson())
-            .toList(),
+        [const PasswordAuthorizationRequest()].map((request) => request.toJson()).toList(),
       );
 
       if (response == null) {
@@ -143,7 +132,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
       scheme: 'https',
       host: 'appleid.apple.com',
       path: '/auth/authorize',
-      queryParameters: <String, String>{
+      queryParameters: {
         'client_id': webAuthenticationOptions.clientId,
         'redirect_uri': webAuthenticationOptions.redirectUri.toString(),
         'scope': scopes.map((scope) {
@@ -164,10 +153,7 @@ class MethodChannelSignInWithApple extends SignInWithApplePlatform {
     ).toString();
 
     try {
-      final result = await _channel.invokeMethod<String>(
-        'performAuthorizationRequest',
-        <String, String>{'url': uri},
-      );
+      final result = await _channel.invokeMethod<String>('performAuthorizationRequest', {'url': uri});
 
       if (result == null) {
         throw const SignInWithAppleAuthorizationException(
